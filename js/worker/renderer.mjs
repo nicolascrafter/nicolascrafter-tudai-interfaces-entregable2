@@ -1,6 +1,6 @@
 "use strict";
 
-import * as rendererConstants from "/js/constants/renderer-constants.mjs";
+import * as rendererConstants from "../constants/renderer-constants.mjs";
 import { Kernel } from "../filters/kernel.mjs";
 import { RgbKernel } from "../filters/rgb_kernel.mjs";
 import { FilterFactory } from "../filters/filters_factory.mjs";
