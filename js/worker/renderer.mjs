@@ -46,7 +46,11 @@ class Renderer {
                     this.image(event.data);
                     break;
                 case "pen_color":
-                    this.#pen_style.color = event.data.data.color;
+                    if (event.data.data.color == undefined) {
+                        this.#pen_style.color = "#000000";
+                    } else {
+                        this.#pen_style.color = event.data.data.color;
+                    }
                     console.log("color", event.data.data.color);
                     break;
                 case "pen_width":
@@ -73,6 +77,8 @@ class Renderer {
         this.#width = data.data.width;
         this.#height = data.data.height;
         this.#canvas = new OffscreenCanvas(this.#width, this.#height);
+        this.#pen_style.size = data.data.pen_size;
+        this.#pen_style.color = data.data.pen_color;
         this.#context = this.#canvas.getContext("2d");
     }
 
@@ -88,11 +94,13 @@ class Renderer {
             this.#context.beginPath();
             for (let i = 0; i < this.#path_points.length; i++) {
                 const point = this.#path_points[i];
-                this.#context.lineTo(point.offsetX, point.offsetY);
+                this.#context.fillStyle = this.#pen_style.color;
+                this.#context.fillRect(point.offsetX - this.#pen_style.size, point.offsetY - this.#pen_style.size, this.#pen_style.size * 2, this.#pen_style.size * 2);
+                // this.#context.lineTo(point.offsetX, point.offsetY);
             }
-            this.#context.lineWidth = this.#pen_style.size;
-            this.#context.strokeStyle = this.#pen_style.color;
-            this.#context.stroke();
+            // this.#context.lineWidth = this.#pen_style.size;
+            // this.#context.strokeStyle = this.#pen_style.color;
+            // this.#context.stroke();
         } else {
             for (let i = 0; i < this.#path_points.length; i++) {
                 const point = this.#path_points[i];

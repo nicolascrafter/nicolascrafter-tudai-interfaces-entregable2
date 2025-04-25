@@ -33,7 +33,7 @@ class Main {
         this.#height = this.canvas.height;
         this.#context = this.canvas.getContext("bitmaprenderer");
 
-        this.worker.postMessage({ type: "init", data: { width: this.#width, height: this.#height } });
+        this.worker.postMessage({ type: "init", data: { width: this.#width, height: this.#height, pen_size: 5, pen_color:"#000000"} });
 
         //Eventos del mouse
         this.canvas.addEventListener("mousedown", this.mouseHandler);
