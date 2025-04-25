@@ -1,3 +1,3 @@
 # TUDAI interfaces entregable 2
 
-El lapiz no funciona con las devtools cerradas ¯\\\_(ツ)\_/¯
+Trabajo practico entregable 2 de interfaces
