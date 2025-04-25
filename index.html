@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <script type="module" src="./js/app.mjs"></script>
+    <title>Entregable 2</title>
+</head>
+<body>
+    <div id="canvas_container">
+        <canvas width="640" height="480" id="canvas"></canvas>
+    </div>
+    <div id="tools">
+        <button type="button" id="clear_image">Limpiar Imagen</button>
+        <input type="file" name="image" id="image_upload" accept="image/*">
+        <button type="button" id="pen">Seleccionar Lapiz</button>
+        <label for="pen_color">Color del Lapiz</label>
+        <input type="color" name="pen_color" id="pen_color">
+        <label for="pen_size">Tamaño del Lapiz</label>
+        <input type="range" name="pen_size" id="pen_size" min="1" max="20" step="1" value="5">
+        <button type="button" id="eraser">Seleccionar Borrador</button>
+        <select name="filters" id="filters">
+            <option value="negativo" selected>Negativo</option>
+            <option value="brillo">Brillo</option>
+            <option value="binarizacion">Binarizacion</option>
+            <option value="blur">Blur</option>
+            <option value="sobel">Deteccion de bordes</option>
+        </select>
+        <!-- solo debe aparecer cuando se seleccionan "brillo" o "blur" con diferentes rangos seleccionables -->
+        <input hidden type="range" name="filter_param" id="filter_param" min="0" max="10">
+        <button type="button" id="apply_filter">Aplicar filtro</button>
+        <button type="button" id="download">Descargar Imagen</button>
+    </div>
+    <a href="" hidden class="invisible" tabindex="-1" id="download_link" download="Imagen.png">No deberias ver esto, no puede tener disabled o sino .click() No funcionaria</a>
+</body>
+</html>
